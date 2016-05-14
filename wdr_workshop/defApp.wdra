@@ -1,0 +1,45 @@
+DefaultApplication ../applications/DefaultApplication.ear
+	*classLoadingMode PARENT_FIRST
+	*startingWeight 1
+	*webModuleClassLoadingMode
+		DefaultWebApplication.war;PARENT_FIRST
+	BindJndiForEJBNonMessageBinding
+		Increment EJB module;Increment;Increment.jar,META-INF/ejb-jar.xml;Increment;;
+	CtxRootForWebMod
+		Default Web Application;DefaultWebApplication.war,WEB-INF/web.xml;/
+	CustomActivationPlan
+		Default Web Application;DefaultWebApplication.war,WEB-INF/web.xml;;
+		Increment EJB module;Increment.jar,META-INF/ejb-jar.xml;;
+	DataSourceFor20CMPBeans
+		Increment EJB module;Increment;Increment.jar,META-INF/ejb-jar.xml;DefaultDatasource;cmpBinding.perConnectionFactory;;
+	DataSourceFor20EJBModules
+		Increment EJB module;Increment.jar,META-INF/ejb-jar.xml;DefaultDatasource;cmpBinding.perConnectionFactory;;;
+	JSPReloadForWebMod
+		Default Web Application;DefaultWebApplication.war,WEB-INF/web.xml;AppDeploymentOption.Yes;10
+	MapEJBRefToEJB
+		Default Web Application;;DefaultWebApplication.war,WEB-INF/web.xml;Increment;com.ibm.defaultapplication.Increment;Increment
+	MapInitParamForServlet
+	MapModulesToServers
+		Default Web Application;DefaultWebApplication.war,WEB-INF/web.xml;$[deploymentTargets]+$[webServers]
+		Increment EJB module;Increment.jar,META-INF/ejb-jar.xml;$[deploymentTargets]
+	MapRolesToUsers
+		All Role;AppDeploymentOption.No;AppDeploymentOption.Yes;;
+	MapSharedLibForMod
+		Default Web Application;DefaultWebApplication.war,WEB-INF/web.xml;
+		DefaultApplication;META-INF/application.xml;
+	MapWebModToVH
+		Default Web Application;DefaultWebApplication.war,WEB-INF/web.xml;$[virtualHost]
+	SharedLibRelationship
+		Default Web Application;DefaultWebApplication.war,WEB-INF/web.xml;;;AppDeploymentOption.Yes
+		DefaultApplication;META-INF/application.xml;;;AppDeploymentOption.Yes
+	allowDispatchRemoteInclude AppDeploymentOption.Yes
+	allowServiceRemoteInclude AppDeploymentOption.Yes
+	asyncRequestDispatchType DISABLED
+	createMBeansForResources AppDeploymentOption.Yes
+	distributeApp AppDeploymentOption.Yes
+	filepermission .*\.dll=755#.*\.so=755#.*\.a=755#.*\.sl=755
+	reloadEnabled AppDeploymentOption.Yes
+	reloadInterval 3
+	useAutoLink AppDeploymentOption.Yes
+	useMetaDataFromBinary AppDeploymentOption.Yes
+	validateinstall off

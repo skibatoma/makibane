@@ -1,0 +1,3 @@
+2016-04-19 11:30:06,763 [INFO] /home/vagrant/WDR/lib/common/wdr/__init__.py(42): using WDR (http://wdr.github.io/WDR/) version 0.7.0
+2016-04-19 11:30:06,776 [INFO] /home/vagrant/WDR/lib/common/wdr/__init__.py(47): the client is connected to host localhost:8880 using SOAP connector
+2016-04-19 11:30:06,792 [INFO] /home/vagrant/WDR/lib/common/wdr/__init__.py(51): the target process is vagrant/vagrant/server1

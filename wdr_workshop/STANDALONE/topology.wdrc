@@ -1,0 +1,3 @@
+Server
+	*name server1
+	@import jdbc.wdrc
